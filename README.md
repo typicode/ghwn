@@ -1,6 +1,6 @@
 # GitHub Web Notifier
 
-Never miss something on GitHub (nothing to install).
+Never miss something on GitHub.
 
 Get desktop notifications for new issues, comments, stars...
 
