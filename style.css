@@ -1,0 +1,66 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  color: #444;
+  margin: auto;
+}
+
+body, footer {
+  width: 680px
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+h2 {
+  border-bottom: 1px solid #EEE;
+  padding-bottom: 20px;
+}
+
+form {
+  background: #F9F9F9;
+  padding: 20px;
+}
+
+a {
+  color: #06AD6C;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  border-top: 1px solid #EEE;
+  margin-top: 30px;
+  padding: 20px 0;
+}
+
+li {
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+/* Sticky footer */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 130px; /* bottom = footer height */
+}
+
+footer {
+  border-top: 1px solid #EEE;
+  position: absolute;
+  bottom: 0;
+  height: 130px;
+}

@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>GitHub Web Notifier</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>
+      <a href=".">
+        <i class="fa fa-bell-o"></i> GHWN - GitHub Web Notifier
+      </a>
+    </h1>
+
+    <h2>Never miss something on GitHub</h2>
+    <p>Get desktop notifications for new issues, comments, stars...</p>
+
+    <form>
+      <input type="text" name="name" placeholder="GitHub username">
+      <input type="submit" value="watch">
+    </form>
+
+    <ul id='list'></ul>
+
+    <footer>
+      <p>
+        <i class="fa fa-thumb-tack"></i> Pin this tab to receive notifications when you open your browser
+      </p>
+      <p>
+        <i class="fa fa-clock-o"></i> Events are fetched every minute
+      </p>
+      <p>
+        <i class="fa fa-code"></i> by <a href="https://github.com/typicode">typicode</a>
+      <p>
+    </footer>
+
+    <script id="list-template" type="text/html">
+      <% _.each(collection, function (model) { %>
+        <li>
+          <strong><%= model.type %></strong>
+          on <%= model.repo.name %>
+          by <%= model.actor.login %>
+          at <%= new Date(model.created_at).toLocaleTimeString() %>
+        </li>
+      <% }); %>
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.0/backbone-min.js"></script>
+    <script src="script.js"></script>
+
+    <a href="https://github.com/typicode/ghwn"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+  </body>
+</html>
