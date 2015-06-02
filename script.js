@@ -59,16 +59,34 @@ $(function () {
       remote.fetch()
     }, 60 * 1000)
 
+    // First fetch
     remote.fetch({
       success: function () {
-        // Add last remote item to the local collection
-        local.push(remote.first())
+        // Add first remote item to the local collection
+        local.unshift(remote.first())
 
         // Add new remote item to the local collection
         remote.on('add', function (model) {
-          local.push(model)
+          local.unshift(model)
         })
       }
+    })
+
+    // On add, update bubble
+    var counter = 0
+
+    ifvisible.on('focus', function () {
+      counter = 0
+      Tinycon.setBubble(counter)
+    })
+
+    remote.on('add', function () {
+      if (ifvisible.now()) {
+        counter = 0
+      } else {
+        ++counter
+      }
+      Tinycon.setBubble(counter)
     })
   })
 })
