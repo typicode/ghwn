@@ -1,63 +1,10 @@
-body {
-  font-family: sans-serif;
-  padding: 20px;
-  color: #444;
-  margin: auto;
+/* GitHub event items */
+
+.item:last-child {
+  border-bottom: none;
 }
 
-body, footer {
-  max-width: 680px
-}
-
-h1 {
-  margin-top: 30px;
-  font-size: 24px;
-  font-weight: normal;
-}
-
-h2 {
-  font-size: 16px;
-  border-bottom: 1px solid #EEE;
-  padding-bottom: 20px;
-}
-
-form {
-  background: #F9F9F9;
-  padding: 20px;
-}
-
-a {
-  color: #4984D1;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-ul {
-  border-top: 1px solid #EEE;
-  margin-top: 30px;
-  padding: 20px 0;
-}
-
-li {
+.item {
+  border-bottom: 1px solid #F5F5F5;
   margin-bottom: 10px;
-  list-style: none;
-}
-
-/* Sticky footer */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 130px; /* bottom = footer height */
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  height: 130px;
 }

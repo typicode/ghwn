@@ -1,51 +1,93 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GitHub Web Notifier</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" id="favicon" href="favicon.png">
   </head>
   <body>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://typicode.github.io/ghwn" data-text="Get desktop notifications for new #github issues, comments, stars... without having to install anything" data-count="none">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <iframe src="https://ghbtns.com/github-btn.html?user=typicode&repo=ghwn&type=star&count=false" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
-    <h1>
-      <a href=".">
-        <i class="fa fa-bell-o"></i> GHWN - GitHub Web Notifier
-      </a>
-    </h1>
 
-    <h2>Never miss something on GitHub</h2>
-    <p>Get desktop notifications for new issues, comments, stars... without having to install anything.</p>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><i class="fa fa-bell-o"></i> GHWN</a>
+          <span id="form"></span>
+        </div>
+      </div>
+    </nav>
 
-    <form>
-      <input type="text" name="name" placeholder="GitHub username">
-      <input type="submit" value="watch">
-    </form>
+    <!-- index view -->
+    <div class="container" id="index">
 
-    <ul id='list'></ul>
+      <div class="page-header">
+        <h1>GitHub Web Notifier</h1>
+      </div>
 
-    <footer>
+      <p class="lead">
+        Never miss something on GitHub
+      </p>
+
+      <p>
+        <i class="fa fa-bell"></i> Get desktop notifications for new issues, comments, stars...
+        without having to install anything.
+      </p>
+
       <p>
         <i class="fa fa-thumb-tack"></i> Pin this tab to receive notifications when you open your browser
       </p>
+
       <p>
-        <i class="fa fa-clock-o"></i> Events are fetched every minute
+        <i class="fa fa-clock-o"></i> New events are fetched every minute
       </p>
-      <p>
-        <i class="fa fa-code"></i> by <a href="https://github.com/typicode">typicode</a>
-      <p>
+
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://typicode.github.io/ghwn" data-text="Get desktop notifications for new #github issues, comments, stars... without having to install anything" data-count="none">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <iframe src="https://ghbtns.com/github-btn.html?user=typicode&repo=ghwn&type=star&count=false" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+
+    </div>
+
+    <!-- list view -->
+    <div class="container" id="list"></div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">
+          GitHub Web Notifier
+          <i class="fa fa-code"></i> with <i class="fa fa-heart"></i>
+          by <a href="https://github.com/typicode">typicode</a>
+        </p>
+      </div>
     </footer>
 
+    <!-- Backbone -->
+    <script id="form-template" type="text/html">
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">@</span>
+            <input type="text" class="form-control" name="name" placeholder="GitHub username">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Watch</button>
+      </form>
+    </script>
+
+    <!-- Backbone -->
     <script id="list-template" type="text/html">
       <% _.each(collection, function (model) { %>
-        <li>
-          <strong><%= model.type %></strong>
-          on <%= model.repo.name %>
-          by <%= model.actor.login %>
-          at <%= new Date(model.created_at).toLocaleTimeString() %>
-        </li>
+        <div class="item">
+          <p>
+            <strong><%= model.type %></strong>
+            on <%= model.repo.name %>
+            by <%= model.actor.login %>
+            at <%= new Date(model.created_at).toLocaleTimeString() %>
+          </p>
+        </div>
       <% }); %>
     </script>
 
