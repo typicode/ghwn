@@ -90,6 +90,7 @@ var Router = Backbone.Router.extend({
 
       // Poll every minute and save intervalId
       this.intervalId = setInterval(function () {
+        console.log('fetch')
         remote.fetch()
       }, 60 * 1000)
 
@@ -103,6 +104,9 @@ var Router = Backbone.Router.extend({
           remote.on('add', function (model) {
             local.unshift(model)
           })
+        },
+        error: function (collection, response) {
+          if (response.status === 404) alert('Can\'t find user ' + name)
         }
       })
 
