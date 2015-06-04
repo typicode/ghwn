@@ -140,6 +140,7 @@ var Router = Backbone.Router.extend({
 })
 
 $(function () {
+  if (!("Notification" in window)) $('#alert').removeClass('hidden')
   var router = new Router()
   new FormView({ el: $('#form'), router: router })
   Backbone.history.start()

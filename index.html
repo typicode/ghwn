@@ -16,20 +16,25 @@
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#"><i class="fa fa-bell-o"></i> GHWN</a>
-          <span id="form"></span>
         </div>
+        <span id="form"></span>
       </div>
     </nav>
 
     <!-- index view -->
     <div class="container" id="index">
 
+      <div id="alert" class="alert alert-warning hidden" role="alert">
+        Sorry, this browser doesn't seem to support desktop notification.
+        GitHub doesn't work on
+      </div>
+
       <div class="page-header">
         <h1>GitHub Web Notifier</h1>
       </div>
 
       <p class="lead">
-        Never miss something on GitHub
+        Never miss something on GitHub.
       </p>
 
       <p>
@@ -45,7 +50,7 @@
 
       <p>
         <i class="fa fa-clock-o"></i>
-        New events are fetched every minute
+        New events are fetched every minute.
       </p>
 
     </div>
@@ -81,7 +86,7 @@
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">@</span>
-            <input type="text" class="form-control" name="name" placeholder="GitHub username">
+            <input type="text" class="form-control" name="name" placeholder="GitHub username" autocapitalize="off">
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Watch</button>
