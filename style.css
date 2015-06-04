@@ -1,5 +1,8 @@
-/* GitHub event items */
+.container {
+  max-width: 730px;
+}
 
+/* Events */
 .item:last-child {
   border-bottom: none;
 }
@@ -7,4 +10,9 @@
 .item {
   border-bottom: 1px solid #F5F5F5;
   margin-bottom: 10px;
+}
+
+/* Social buttons */
+iframe {
+  vertical-align: bottom;
 }
