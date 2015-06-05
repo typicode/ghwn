@@ -19,8 +19,11 @@ var FormView = Backbone.View.extend({
     e.preventDefault()
     var name = this.$('[name=name]').val()
     this.router.navigate(name, {trigger: true});
-  }
+  },
 
+  setName: function (name) {
+    this.$('[name=name]').val(name)
+  }
 })
 
 var ListView = Backbone.View.extend({
@@ -67,6 +70,9 @@ var Router = Backbone.Router.extend({
   },
 
   watch: function (name) {
+    // Show username in formView
+    App.formView.setName(name)
+
     // Ask permission first
     Notification.requestPermission(function () {
       // Clear interval if any
@@ -85,11 +91,14 @@ var Router = Backbone.Router.extend({
       var local = new Backbone.Collection
 
       // Create views
-      this.listView = new ListView({ el: $('#list'), collection: local })
-      this.notificationView = new NotificationView({ collection: local })
+      App.listView = new ListView({ collection: local })
+      App.notificationView = new NotificationView({ collection: local })
+
+      // Show listView
+      $('#list').html(App.listView.el)
 
       // Poll every minute and save intervalId
-      this.intervalId = setInterval(function () {
+      App.intervalId = setInterval(function () {
         console.log('fetch')
         remote.fetch()
       }, 60 * 1000)
@@ -131,11 +140,14 @@ var Router = Backbone.Router.extend({
 
   index: function () {
     // Clear interval if any
-    clearInterval(this.intervalId)
+    clearInterval(App.intervalId)
 
     // Remove events views
-    if (this.listView) this.listView.remove()
-    if (this.notificationView) this.notificationView.remove()
+    if (App.listView) App.listView.remove()
+    if (App.notificationView) App.notificationView.remove()
+
+    // Reset form view
+    App.formView.setName('')
 
     // Show index view again
     $('#index').show()
@@ -143,9 +155,11 @@ var Router = Backbone.Router.extend({
 
 })
 
+var App = {}
+
 $(function () {
   if (!("Notification" in window)) $('#alert').removeClass('hidden')
   var router = new Router()
-  new FormView({ el: $('#form'), router: router })
+  App.formView = new FormView({ el: $('#form'), router: router })
   Backbone.history.start()
 })
