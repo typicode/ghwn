@@ -2,7 +2,10 @@
   max-width: 760px;
 }
 
-/* Events */
+#index {
+  padding-top: 0;
+}
+
 .item:last-child {
   border-bottom: none;
 }
@@ -15,4 +18,8 @@
 /* Social buttons */
 iframe {
   vertical-align: bottom;
+}
+
+.img-center {
+  margin: 0 auto;
 }
