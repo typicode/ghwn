@@ -149,6 +149,9 @@ var Router = Backbone.Router.extend({
     // Reset form view
     App.formView.setName('')
 
+    // Set focus on desktop
+    if ("Notification" in window) $('#input').focus()
+
     // Show index view again
     $('#index').show()
   }
