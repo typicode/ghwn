@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GitHub Web Notifier</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/lumen/bootstrap.min.css" rel="stylesheet">
     <link href="sticky-footer-navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" id="favicon" href="favicon.png">
@@ -29,13 +29,21 @@
       </div>
 
       <div class="page-header">
-        <h1>Never miss something on GitHub</h1>
+        <h1>Desktop notifications for GitHub</h1>
       </div>
 
       <p>
-        <i class="fa fa-bell-o"></i>
-        Get <strong>desktop notifications</strong> for new comments, stars and issues.
+        <img class="hidden-xs img-responsive " src="screenshot.png">
+        <img class="visible-xs-inline img-responsive img-center" src="screenshot-xs.png">
       </p>
+
+      <hr>
+
+      <p>
+        <strong>Nothing to install</strong>, simply enter your GitHub username and never miss something (<strong>private repositories supported</strong>).
+      </p>
+
+      <hr>
 
       <p>
         <i class="fa fa-thumb-tack"></i>
@@ -47,10 +55,6 @@
         New events are fetched every minute.
       </p>
 
-      <div style="margin-top: 30px">
-        <img class="hidden-xs img-responsive img-rounded" src="screenshot.png">
-        <img class="visible-xs-inline img-responsive img-rounded img-center" src="screenshot-xs.png">
-      </div>
 
     </div>
 
@@ -76,18 +80,16 @@
     <script id="form-template" type="text/html">
       <form class="navbar-form navbar-left">
         <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">@</span>
-            <input type="text" id="input" class="form-control" name="name" placeholder="GitHub username" autocapitalize="off">
-          </div>
+          <input type="text" id="input" class="form-control" name="name" placeholder="Your GitHub username" autocapitalize="off">
         </div>
-        <button type="submit" class="btn btn-primary">Watch</button>
+        <button type="submit" class="btn btn-success">Watch</button>
       </form>
     </script>
 
     <!-- List template -->
     <script id="list-template" type="text/html">
-      <p>Watching... (refreshed every minute)</p>
+      <p><em>Watching... (refreshed every minute)</em></p>
+      <hr>
       <% _.each(collection, function (model) { %>
         <div class="item">
           <p>
