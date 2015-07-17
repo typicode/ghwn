@@ -85,7 +85,7 @@ var Router = Backbone.Router.extend({
       var remote = new Backbone.Collection
 
       // See https://developer.github.com/v3/activity/events/#list-events-that-a-user-has-received
-      remote.url = 'https:api.github.com/users/' + name + '/received_events'
+      remote.url = 'https://api.github.com/users/' + name + '/received_events'
 
       // Create an empty collection that will be used in views
       var local = new Backbone.Collection
