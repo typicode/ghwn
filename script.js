@@ -56,7 +56,8 @@ var NotificationView = Backbone.View.extend({
       'by', attr.actor.login,
       'at', new Date(attr.created_at).toLocaleTimeString()
     ].join(' ')
-    var notification = new Notification(title, { body: body })
+    var icon = attr.actor.avatar_url
+    var notification = new Notification(title, { body: body, icon: icon })
     setTimeout(notification.close.bind(notification), 5000)
   },
 
