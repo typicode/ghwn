@@ -99,7 +99,7 @@
           <p>
             <strong><%= model.type %></strong>
             on <%= model.repo.name %>
-            by <%= model.actor.login %>
+            by <img src="<%= model.actor.avatar_url %>" class="avatar" /> <%= model.actor.login %>
             at <%= new Date(model.created_at).toLocaleTimeString() %>
           </p>
         </div>
