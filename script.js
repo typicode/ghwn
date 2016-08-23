@@ -42,6 +42,20 @@ var ListView = Backbone.View.extend({
 
 })
 
+var eventURL = function(event) {
+  if (event.type == 'PullRequestEvent') {
+    return event.payload.pull_request.html_url
+  } else if (event.type == 'PushEvent') {
+    return 'https://github.com/'+event.repo.name+'/compare/'+event.payload.before+'...'+event.payload.head
+  } else if (event.type == 'IssuesEvent') {
+    return event.payload.issue.html_url
+  } else if (event.type == 'IssueCommentEvent') {
+    return event.payload.comment.html_url
+  } else {
+    return 'https://github.com/'+event.repo.name
+  }
+}
+
 var NotificationView = Backbone.View.extend({
 
   initialize: function () {
@@ -58,6 +72,11 @@ var NotificationView = Backbone.View.extend({
     ].join(' ')
     var icon = attr.actor.avatar_url
     var notification = new Notification(title, { body: body, icon: icon })
+    var url = eventURL(attr)
+    notification.onclick = function(event) {
+      event.preventDefault();
+      window.open(eventURL(attr), '_blank');
+    }
     setTimeout(notification.close.bind(notification), 5000)
   },
 
