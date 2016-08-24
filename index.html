@@ -99,7 +99,7 @@
           <p>
             <strong><a href="<%= eventURL(model) %>" target="_blank"><%= model.type %></a></strong>
             on <a href="https://github.com/<%= model.repo.name %>" target="_blank"><%= model.repo.name %></a>
-            by <img src="<%= model.actor.avatar_url %>" class="avatar" /> <%= model.actor.login %>
+            by <a href="https://github.com/<%= model.actor.login %>" target="_blank"><img src="<%= model.actor.avatar_url %>" class="avatar" /> <%= model.actor.login %></a>
             at <%= new Date(model.created_at).toLocaleTimeString() %>
           </p>
         </div>
