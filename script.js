@@ -51,6 +51,8 @@ var eventURL = function(event) {
     return event.payload.issue.html_url
   } else if (event.type == 'IssueCommentEvent') {
     return event.payload.comment.html_url
+  } else if (event.type == 'ForkEvent') {
+    return event.payload.forkee.html_url
   } else {
     return 'https://github.com/'+event.repo.name
   }
