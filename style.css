@@ -23,3 +23,7 @@ iframe {
 .img-center {
   margin: 0 auto;
 }
+
+.avatar {
+  width: 20px;
+}
